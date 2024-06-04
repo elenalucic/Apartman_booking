@@ -1,0 +1,67 @@
+{% extends 'app/base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'app/css/app.css' %}">
+
+<style>
+.card-title {
+    font-size: 35px;
+    color: grey;
+}
+
+a {
+    text-decoration: none;
+}
+
+.add_apartman {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+.card-body img{
+    border-radius: 8px;
+}
+
+</style>
+
+<div class="container">
+    <div class="card-wrapper">
+     
+        {% if user.is_superuser %}
+        <div class="add_apartman">
+            <a class="btn btn-block text-body load-content" href="{% url 'app:add_apartman' %}" style="background-color: gray;">Add apartman</a>
+        </div>
+        {% endif %}
+
+        {% for apartman in apartmans %}
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    {% if apartman.apartman_image %}
+                    <div class="col-md-4">
+                        <a href="{% url 'app:apartman_detail' apartman.id %}" class="load-content" data-url="{% url 'app:apartman_detail' apartman.id %}">
+                            <img src="{{ apartman.apartman_image.url }}" class="card-img-top img-fluid" alt="Image" >
+                        </a>
+                    </div>
+                    {% endif %}
+                    <div class="col-md-6">
+                        <a href="{% url 'app:apartman_detail' apartman.id %}"  data-url="{% url 'app:apartman_detail' apartman.id %}">
+                            <h5 class="card-title">{{ apartman.title }}</h5>
+                        </a>
+                        <p class="card-text"><b>Location:</b> {{ apartman.location }}</p>
+                        <p class="card-text"><b>Price:</b> {{ apartman.price }}</p>
+                        <p class="card-text">{{ apartman.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No available apartmans</p>
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+
+
+{% endblock content %}

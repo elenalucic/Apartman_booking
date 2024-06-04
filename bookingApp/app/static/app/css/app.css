@@ -1,0 +1,319 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    background-color: #fffffe;
+  }
+  
+  h1 {
+    color: #045B57;
+  }
+  
+  p {
+    color: #3C3D42;
+  }
+  
+  nav {
+    background-color: white;
+  }
+  
+  .nav-link {
+    font-size: 18px !important;
+  }
+
+  .navbar-nav{
+    background-color: gray;
+    justify-content: center;
+  }
+  
+  
+  .jumbotron-container {
+    background: rgb(246, 248, 226);
+    background: linear-gradient(90deg, rgba(246, 248, 226, 1) 3%, rgba(224, 221, 202, 1) 33%, rgba(156, 205, 98, 0.9809173669467787) 100%);
+    background-size: cover;
+  }
+  
+  .custom-btn {
+    background-color: #9CCD62;
+    color: #fffffe;
+  }
+  
+  .custom-btn2 {
+    background-color: #68b2f7;
+    color: #fffffe;
+  }
+  
+  .logo {
+    max-height: 35px;
+  }
+
+  .title{
+    white-space: nowrap; 
+    word-spacing: 1rem; 
+    letter-spacing: 0.5rem;
+     padding-left: 40px;
+  }
+  
+  .form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: .5rem;
+  }
+
+  .form-control {
+    border-radius: .25rem;
+    border: 1px solid #ccc;
+    padding: .5rem 1rem;
+  }
+
+  .form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: 0 0 8px rgba(102, 175, 233, .6);
+  }
+
+  .help-block {
+    color: #d9534f;
+    margin-top: .25rem;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+
+  .mt-5 {
+    margin-top: 3rem !important;
+  }
+
+  
+  
+  .job {
+    padding: 5px;
+    border: 1px solid black;
+  }
+  
+  .read{
+    font-weight: normal;
+  }
+  
+  .unread{
+    font-weight: bold;
+  }
+  
+  
+  table.jobs {
+    width: 100%;
+  }
+  
+  table.jobs td {
+    padding: 5px;
+    border: 1px solid black;
+  }
+  
+  table.jobs td.bid-controls-row {
+    border: none;
+    padding-bottom: 20px;
+  
+  }
+  
+  .help-block {
+    color: red;
+  }
+  
+  .with-whitespace {
+    white-space: pre-wrap;
+  }
+  
+  .bid {
+    padding: 5px;
+  
+  }
+  
+  .bid.accepted {
+    background: #f1fff1;
+  }
+  
+  .won-job {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .lost-job {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .margin--bottom {
+    margin-bottom: 2em;
+  }
+  
+  
+  
+  .custom-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    padding: .6em;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+  }
+  
+  .custom-table th {
+    text-align: left;
+  }
+  
+  .custom-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .custom-table tr.placed-bid td:first-child {
+    border-left: 3px solid #68b2f7 !important;
+  
+  }
+  
+  .custom-table tr.placed-bid td:last-child {
+    border-right: 3px solid #68b2f7 !important;
+  
+  }
+  
+  .custom-table tr.placed-bid:nth-child(3n+1) td {
+    border-top: 3px solid #68b2f7 !important;
+  
+  }
+  
+  .custom-table tr.placed-bid:nth-child(3n+3) td {
+    border-bottom: 3px solid #68b2f7 !important;
+  
+  }
+  
+  .messenger .left-sidebar {
+    border: 1px solid #ddd;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .messenger .left-sidebar .user {
+    background-color: #F0F0F0;
+    padding: 5px;
+    border: 2px solid #ddd;
+  }
+  
+  .messenger form {
+    display: flex;
+    flex-direction: row;
+    /*justify-content: space-between;*/
+    padding: 5px;
+  }
+  
+  
+  
+  .messenger .send-message input[type="text"] {
+    /*width: 100%;*/
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+  
+  .messenger .messages {
+    height: 80vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  .no-padding {
+    padding: 0;
+  }
+  
+  .input-message {
+    /*max-width: 50vw;*/
+    height: 45px;
+    flex: 1;
+  }
+  
+  .blog-link{
+  
+    font-size: 18px !important;
+  }
+  
+  .post-list {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .post {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post h4 {
+    margin-top: 0;
+  }
+  
+  .cta-button {
+    text-align: center;
+    background-color: #FF9900;
+    color: #FFFFFF;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  
+  .stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .stat-box {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .post-details{
+  
+    background-color: lightgray;
+    width: 500px;
+  }
+
+
+  .card-title{
+    font-size: 50px;
+  }
