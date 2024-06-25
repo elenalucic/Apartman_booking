@@ -10,21 +10,25 @@ def home(request):
     apartmans = Apartman.objects.all()
     form = ApartmanForm()
 
-    if request.user.is_superuser:
-        if request.method == 'POST':
-            form = ApartmanForm(request.POST, request.FILES)
-            if form.is_valid():
-                apartman = form.save(commit=False)
-                apartman.user = request.user
-                apartman.save()
-                return HttpResponseRedirect(reverse('app:home')) 
-    else:
-        form = None  
+    if request.method == 'POST' and request.user.is_superuser:
+        form = ApartmanForm(request.POST, request.FILES)
+        if form.is_valid():
+            apartman = form.save(commit=False)
+            apartman.user = request.user
+            apartman.save()
+            if request.is_ajax():
+                return JsonResponse({'success': True})
+            return HttpResponseRedirect(reverse('app:home'))
+        else:
+            if request.is_ajax():
+                return JsonResponse({'success': False, 'errors': form.errors})
+    
     context = {
         'apartmans': apartmans,
         'form': form
     }
     return render(request, 'app/home.html', context)
+
 
 def apartman_detail(request, apartman_id):
     apartman = get_object_or_404(Apartman, id=apartman_id)
@@ -34,6 +38,7 @@ def apartman_detail(request, apartman_id):
 @login_required
 def add_booking(request):
     if request.method == 'POST':
+
         form = BookingForm(request.POST)
         if form.is_valid():
             new_booking = form.save(commit=False)
@@ -97,13 +102,15 @@ def add_apartman(request):
             apartman = form.save(commit=False)
             apartman.user = request.user
             apartman.save()
-            return HttpResponseRedirect(reverse('app:home'))
-        else:  
-            return render(request, 'app/add_apartman.html', {'form': form})
+            return HttpResponseRedirect(reverse('app:apartman_detail', args=[apartman.id]))
+        else:
+            errors = form.errors.as_json()
+            return JsonResponse({'success': False, 'errors': errors}, status=400)
     else:
         form = ApartmanForm()
         context = {
             'form': form,
         }
         return render(request, 'app/add_apartman.html', context)
+    
 

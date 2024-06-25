@@ -24,16 +24,12 @@
   }
 
   .navbar-nav{
-    background-color: gray;
+    background-color: lightgray;
     justify-content: center;
   }
   
   
-  .jumbotron-container {
-    background: rgb(246, 248, 226);
-    background: linear-gradient(90deg, rgba(246, 248, 226, 1) 3%, rgba(224, 221, 202, 1) 33%, rgba(156, 205, 98, 0.9809173669467787) 100%);
-    background-size: cover;
-  }
+ 
   
   .custom-btn {
     background-color: #9CCD62;
@@ -45,9 +41,6 @@
     color: #fffffe;
   }
   
-  .logo {
-    max-height: 35px;
-  }
 
   .title{
     white-space: nowrap; 
@@ -65,6 +58,8 @@
     font-weight: bold;
     margin-bottom: .5rem;
   }
+
+
 
   .form-control {
     border-radius: .25rem;
@@ -107,36 +102,7 @@
     margin-top: 3rem !important;
   }
 
-  
-  
-  .job {
-    padding: 5px;
-    border: 1px solid black;
-  }
-  
-  .read{
-    font-weight: normal;
-  }
-  
-  .unread{
-    font-weight: bold;
-  }
-  
-  
-  table.jobs {
-    width: 100%;
-  }
-  
-  table.jobs td {
-    padding: 5px;
-    border: 1px solid black;
-  }
-  
-  table.jobs td.bid-controls-row {
-    border: none;
-    padding-bottom: 20px;
-  
-  }
+ 
   
   .help-block {
     color: red;
@@ -145,26 +111,7 @@
   .with-whitespace {
     white-space: pre-wrap;
   }
-  
-  .bid {
-    padding: 5px;
-  
-  }
-  
-  .bid.accepted {
-    background: #f1fff1;
-  }
-  
-  .won-job {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .lost-job {
-    color: red;
-    font-weight: bold;
-  }
-  
+ 
   .margin--bottom {
     margin-bottom: 2em;
   }
@@ -177,106 +124,13 @@
     margin: 0;
   }
   
-  .custom-table th,
-  .custom-table td {
-    padding: .6em;
-    background: white;
-    border-bottom: 1px solid #ddd;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-  }
-  
-  .custom-table th {
-    text-align: left;
-  }
-  
-  .custom-table tr:last-child td {
-    border-bottom: none;
-  }
-  
-  .custom-table tr.placed-bid td:first-child {
-    border-left: 3px solid #68b2f7 !important;
-  
-  }
-  
-  .custom-table tr.placed-bid td:last-child {
-    border-right: 3px solid #68b2f7 !important;
-  
-  }
-  
-  .custom-table tr.placed-bid:nth-child(3n+1) td {
-    border-top: 3px solid #68b2f7 !important;
-  
-  }
-  
-  .custom-table tr.placed-bid:nth-child(3n+3) td {
-    border-bottom: 3px solid #68b2f7 !important;
-  
-  }
-  
-  .messenger .left-sidebar {
-    border: 1px solid #ddd;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-  
-  .messenger .left-sidebar .user {
-    background-color: #F0F0F0;
-    padding: 5px;
-    border: 2px solid #ddd;
-  }
-  
-  .messenger form {
-    display: flex;
-    flex-direction: row;
-    /*justify-content: space-between;*/
-    padding: 5px;
-  }
-  
-  
-  
-  .messenger .send-message input[type="text"] {
-    /*width: 100%;*/
-    border: 1px solid #ddd;
-    padding: 5px;
-  }
-  
-  .messenger .messages {
-    height: 80vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
+
   
   .no-padding {
     padding: 0;
   }
   
-  .input-message {
-    /*max-width: 50vw;*/
-    height: 45px;
-    flex: 1;
-  }
-  
-  .blog-link{
-  
-    font-size: 18px !important;
-  }
-  
-  .post-list {
-    display: grid;
-    gap: 20px;
-  }
-  
-  .post {
-    background-color: #f5f5f5;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
+
   .post h4 {
     margin-top: 0;
   }
@@ -317,3 +171,251 @@
   .card-title{
     font-size: 50px;
   }
+
+/*APARTMAN DETAIL */
+  .content-apartman{
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding: 20px;
+    }
+
+    .edit-button{
+        margin: 10px;
+    }
+
+    .booking-details ul{
+        list-style-type: none;
+    }
+
+   .booking{
+        margin: 20px;
+        margin-left: 100px; 
+        background-color: lightgray;
+        padding: 30px;
+        border-radius: 10px;
+        height: fit-content;
+    }
+
+    .card-text2{
+        margin: 10px;
+    }
+
+
+    #id_end_date{
+        border-radius: 7px;
+    }
+
+    #id_start_date{
+        border-radius: 7px;
+    }
+
+   
+
+    .card-body b{
+        margin: 10px;
+    }
+
+    .card-detail{
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .card-title-detail {
+        font-size: 40px;
+        color: #333;
+        margin: 20px;
+        align-self: center;
+    }
+
+    .card-img-top {
+        margin-bottom: 15px;
+    }
+
+    .card-text-detail {
+        font-size: 16px;
+        color: #555;
+    }
+
+    #calendar {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 70%;
+        height: 600px;
+       
+    }
+
+    .calendar{
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+       
+  
+    }
+
+    #id_start_date{
+        padding: 10px;
+    }
+    #id_end_date{
+        padding: 10px;
+    }
+
+    #booking-form {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    #booking-form h3 {
+        margin-bottom: 15px;
+      
+    }
+
+    #booking-form .btn-primary {
+        background-color: whitesmoke;
+        border-color: gray;
+        color: black;
+    }
+
+    #booking-form .btn-primary:hover {
+        background-color: gray;
+        border-color: black;
+        color: black;
+    }
+
+    .card-body-detail{
+        display: flex;
+        flex-direction: row;
+        }
+
+    .card-body-detail img{
+        width: 50%;
+        height: 50%;
+    }
+
+.modal {
+    padding-top: 200px;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-width: 900px;
+}
+
+.modal-content, #caption {  
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+.close {
+    padding-top: 100px;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* HOME */
+.card-title-home {
+  font-size: 35px;
+  color: grey;
+}
+
+a {
+  text-decoration: none;
+}
+
+.add_apartman {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.card-body-home img{
+  border-radius: 8px;
+  
+}
+
+.card-body-home{
+  margin: 30px;
+}
+
+.card-wrapper{
+  margin: 20px;
+}
+
+.card-home{
+  border: 1px solid #ccc;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+
+.background-image {
+  background-size: cover;
+  background-position: center;
+  height: 800px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-apartman{
+  margin: 40px;
+}
+
+
+.container{
+  padding-top: 110px;
+}
+
+
+/*BASE*/
+
+#myNavbar {
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(5px); 
+  background-color: rgba(211, 211, 211, 0.5);
+}
+
+.nav-link{
+  font-weight: bold;
+}
+
+
+#sort-select{
+  font-size: 50px;
+  font-weight: bold;
+  padding-left: 30px;
+  width: fit-content;
+}
+
+

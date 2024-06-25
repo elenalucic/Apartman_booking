@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import  HttpResponseRedirect
+from django.http import  HttpResponseRedirect,JsonResponse
 from django.urls import reverse
 from django.contrib.auth.models import User
 from app.models import Account
@@ -11,6 +11,8 @@ from rest_framework.response import Response
 from .serializers import UserSerializer
 from django.contrib.auth.hashers import make_password
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.forms import AuthenticationForm
+
 
 
 def register(request):
@@ -24,6 +26,7 @@ def register(request):
             account = account_form.save(commit=False)
             account.user = user
             account.save()
+            login(request, user)
             return HttpResponseRedirect(reverse('app:home'))
         else:
             return render(request, 'accounts/register.html', {'user_form': user_form, 'account_form': account_form})
@@ -60,14 +63,16 @@ def register_api(request):
 @api_view(['POST'])
 def login_api(request):
     if request.method == 'POST':
-        username = request.data.get('username')
-        password = request.data.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return Response({'message': 'Logged in successfully'}, status=status.HTTP_200_OK)
-        else:
-            return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return JsonResponse({'success': True})
+        return JsonResponse({'success': False, 'errors': form.errors}, status=400)
+    return JsonResponse({'success': False, 'message': 'Invalid request method.'}, status=400)
 
 @api_view(['POST'])
 def logout_api(request):

@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="mt-3 text-center">
-                  Don't have an account? <a href="{% url 'accounts:register' %}" class="text-decoration-none">Register here</a>
+                  Don't have an account? <a class="reg-link" href="{% url 'accounts:register' %}" class="text-decoration-none">Register here</a>
                 </div>
               </form>
 
@@ -70,5 +70,10 @@
       this.submit();
     }
   });
+
+
+
 </script>
+
+
 {% endblock %}

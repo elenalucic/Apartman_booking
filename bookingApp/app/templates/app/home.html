@@ -1,67 +1,181 @@
 {% extends 'app/base.html' %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'app/css/app.css' %}">
 
 <style>
-.card-title {
-    font-size: 35px;
-    color: grey;
+.background-image {
+    background-image: url('{% static "app/images/background-img.jpg" %}');
 }
 
-a {
-    text-decoration: none;
+.sort{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#sort-select{
+    width: fit-content;
+    appearance: none;
+    background: url('{% static "app/images/dropdown-icon.png" %}') no-repeat right center;
+    background-size: 20px;
+    padding-right: 30px; 
+    margin-left: 10px;
 }
 
-.add_apartman {
-    margin-top: 5px;
-    margin-bottom: 20px;
-}
-
-.card-body img{
-    border-radius: 8px;
-}
 
 </style>
+    
+<div class="background-image"></div>
+<div class="card-wrapper-home">
 
-<div class="container">
-    <div class="card-wrapper">
-     
-        {% if user.is_superuser %}
-        <div class="add_apartman">
-            <a class="btn btn-block text-body load-content" href="{% url 'app:add_apartman' %}" style="background-color: gray;">Add apartman</a>
-        </div>
-        {% endif %}
+    <div class="sort">
+        <label for="sort-select">SORTIRAJ:</label>
+        <select id="sort-select" class="form-control">
+            <option value="" selected disabled hidden>Odaberite opciju</option>
+            <option value="lowest-price">Najniža cijena</option>
+            <option value="highest-price">Najviša cijena</option>
+        </select>
+    </div>
+    
+    {% if user.is_superuser %}
+    <div class="add-apartman">
+        <a class="btn btn-block text-body load-content" href="{% url 'app:add_apartman' %}" style="background-color: gray;">Add apartman</a>
+    </div>
+    {% endif %}
 
-        {% for apartman in apartmans %}
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    {% if apartman.apartman_image %}
-                    <div class="col-md-4">
-                        <a href="{% url 'app:apartman_detail' apartman.id %}" class="load-content" data-url="{% url 'app:apartman_detail' apartman.id %}">
-                            <img src="{{ apartman.apartman_image.url }}" class="card-img-top img-fluid" alt="Image" >
-                        </a>
-                    </div>
+    {% for apartman in apartmans %}
+    <div class="card-home">
+        <div class="card-body-home">
+            <div class="row">
+                {% if apartman.apartman_image %}
+                    {% if forloop.counter|divisibleby:2 %}
+                        <div class="col-md-4">
+                            <a href="{% url 'app:apartman_detail' apartman.id %}" class="load-content" data-url="{% url 'app:apartman_detail' apartman.id %}">
+                                <img src="{{ apartman.apartman_image.url }}" class="card-img-top img-fluid" alt="Image">
+                            </a>
+                        </div>
+                        <div class="col-md-8">
+                            <a href="{% url 'app:apartman_detail' apartman.id %}"  data-url="{% url 'app:apartman_detail' apartman.id %}">
+                                <h5 class="card-title-home">{{ apartman.title }}</h5>
+                            </a>
+                            <p class="card-text"><b>Location:</b> {{ apartman.location }}</p>
+                            <p class="card-text" data-type="price"><b>Price:</b> {{ apartman.price }}</p>
+                            {% if apartman.description %}
+                            <div class="description-summary">
+                                <p class="summary-text">{{ apartman.description|slice:":100" }}{% if apartman.description|length > 100 %}...{% endif %}</p>
+                                {% if apartman.description|length > 100 %}
+                                    <p><a href="#" class="show-more">Show more</a></p>
+                                {% endif %}
+                            </div>
+                            <div class="full-description" style="display: none;">
+                                <p>{{ apartman.description }}</p>
+                                
+                            </div>
+                        {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="col-md-8">
+                            <a href="{% url 'app:apartman_detail' apartman.id %}" class="load-content" data-url="{% url 'app:apartman_detail' apartman.id %}">
+                                <h5 class="card-title-home">{{ apartman.title }}</h5>
+                            </a>
+                            <p class="card-text"><b>Location:</b> {{ apartman.location }}</p>
+                            <p class="card-text" data-type="price"><b>Price:</b> {{ apartman.price }}</p>
+                            {% if apartman.description %}
+                            <div class="description-summary">
+                                <p class="summary-text">{{ apartman.description|slice:":100" }}{% if apartman.description|length > 100 %}...{% endif %}</p>
+                                {% if apartman.description|length > 100 %}
+                                    <p><a href="#" class="show-more">Show more</a></p>
+                                {% endif %}
+                            </div>
+                            <div class="full-description" style="display: none;">
+                                <p>{{ apartman.description }}</p>
+                              
+                            </div>
+                        {% endif %}
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{% url 'app:apartman_detail' apartman.id %}"  data-url="{% url 'app:apartman_detail' apartman.id %}">
+                                <img src="{{ apartman.apartman_image.url }}" class="card-img-top img-fluid" alt="Image">
+                            </a>
+                        </div>
                     {% endif %}
-                    <div class="col-md-6">
-                        <a href="{% url 'app:apartman_detail' apartman.id %}"  data-url="{% url 'app:apartman_detail' apartman.id %}">
-                            <h5 class="card-title">{{ apartman.title }}</h5>
+                {% else %}
+                    <div class="col-md-12">
+                        <a href="{% url 'app:apartman_detail' apartman.id %}" class="load-content" data-url="{% url 'app:apartman_detail' apartman.id %}">
+                            <h5 class="card-title-home">{{ apartman.title }}</h5>
                         </a>
                         <p class="card-text"><b>Location:</b> {{ apartman.location }}</p>
-                        <p class="card-text"><b>Price:</b> {{ apartman.price }}</p>
-                        <p class="card-text">{{ apartman.description }}</p>
+                        <p class="card-text" data-type="price"><b>Price:</b> {{ apartman.price }}</p>
+                        {% if apartman.description %}
+                            <div class="description-summary">
+                                <p class="summary-text">{{ apartman.description|slice:":100" }}{% if apartman.description|length > 100 %}...{% endif %}</p>
+                                {% if apartman.description|length > 100 %}
+                                    <p><a href="#" class="show-more">Show more</a></p>
+                                {% endif %}
+                            </div>
+                            <div class="full-description" style="display: none;">
+                                <p>{{ apartman.description }}</p>
+                              
+                            </div>
+                        {% endif %}
                     </div>
-                </div>
+                {% endif %}
             </div>
         </div>
-        {% empty %}
-        <p>No available apartmans</p>
-        {% endfor %}
     </div>
-</div>
+    {% empty %}
+        <p>No available apartmans</p>
+    {% endfor %}
 </div>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.show-more').forEach(function(item) {
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+            var descriptionSummary = this.closest('.description-summary');
+            var fullDescription = descriptionSummary.nextElementSibling;
+            fullDescription.style.display = 'block';
+            descriptionSummary.style.display = 'none';
+        });
+    });
+
+
+
+  
+});
+
+        document.getElementById('sort-select').addEventListener('change', function() {
+            var sortType = this.value;
+            var sortedApartmans = Array.from(document.querySelectorAll('.card-home'))
+                .map(function(card) {
+                    return {
+                        element: card,
+                        price: parseFloat(card.querySelector('.card-text[data-type="price"]').textContent.trim().split(' ')[1])
+                    };
+                });
+    
+            if (sortType === 'lowest-price') {
+                sortedApartmans.sort(function(a, b) {
+                    return a.price - b.price;
+                });
+            } else if (sortType === 'highest-price') {
+                sortedApartmans.sort(function(a, b) {
+                    return b.price - a.price;
+                });
+            }
+    
+            var cardWrapper = document.querySelector('.card-wrapper-home');
+            sortedApartmans.forEach(function(item) {
+                cardWrapper.appendChild(item.element);
+            });
+        });
+    
+    </script>
+    
+    
 
 
 {% endblock content %}
